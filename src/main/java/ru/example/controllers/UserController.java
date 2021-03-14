@@ -66,7 +66,7 @@ public class UserController {
     }
 
     @PutMapping(value = "/users/")
-    public  ResponseEntity<String> updateStatusEmpty() {
+    public  ResponseEntity<?> updateStatusEmpty() {
         return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
     }
 
