@@ -8,15 +8,16 @@ public interface UserService {
 
     /**
      * Создает нового пользователя, возвращает его id
-     * @param user - пользователь для создания
-     * @return  - id созданного пользователя
+     * @param user пользователь для создания
+     * @return id созданного пользователя
      */
     int create(User user);
 
     /**
-     * Возвращает пользователя, по его id
-     * @param id - id пользователя
-     * @return  - объект пользователя с заданным id
+     * Возвращает Optional<User> пользователя, по его id.
+     * Если не пользователь не найден - Optional с null.
+     * @param id id пользователя
+     * @return Optional&lt;User&gt; или Optional с null.
      */
     Optional<User> read(int id);
 
@@ -24,9 +25,9 @@ public interface UserService {
     /**
      * Обновляет пользователя с заданным ID,
      * в соответствии с переданным клиентом
-     * @param user - обновлённый пользователь
-     * @param id - id пользователя, которого нужно обновить
-     * @return - true если пользователь был обновлен, иначе false
+     * @param user обновлённый пользователь
+     * @param id id пользователя, которого нужно обновить
+     * @return true если пользователь был обновлен, иначе false
      */
     boolean update(User user, int id);
 }

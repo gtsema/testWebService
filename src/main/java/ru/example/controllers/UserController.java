@@ -74,11 +74,11 @@ public class UserController {
         return InputChecker.isUsername(user.getUsername()) &&
                InputChecker.isEmail(user.getEmail()) &&
                InputChecker.isPhoneNumber(user.getPhoneNumber());
-    } // log
+    }
 
     private void statusAutoChange(User user) {
         Date current = Calendar.getInstance().getTime();
-        long elapsedSec = (current.getTime() - user.getLastActivity().getTime())/(1000);
+        long elapsedSec = (current.getTime() - user.getLastActivity().getTime())/1000;
 
         if(user.getStatus() == User.Status.Online && elapsedSec > autoChangeDelaySec) {
             user.setStatus(User.Status.Away);
