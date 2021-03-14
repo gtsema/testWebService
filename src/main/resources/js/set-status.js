@@ -22,8 +22,8 @@ function handleButtonClick() {
 
     let response = fetch(url, {
         method: 'PUT',
-        headers: {"Content-Type": "text/html"},
-        body: status
+        headers: {"Content-Type": "application/json"},
+        body: JSON.stringify({ Status : status })
     });
 
     response.then(response => response.ok ? response.json() : Promise.reject(response))

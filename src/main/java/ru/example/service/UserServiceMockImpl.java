@@ -1,16 +1,17 @@
 package ru.example.service;
 
-import org.springframework.stereotype.Service;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.example.model.User;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
-@Service
+//@Service
 public class UserServiceMockImpl implements UserService {
+    private static final Logger logger = LoggerFactory.getLogger(UserServiceMockImpl.class);
 
     private static final Map<Integer, User> USER_REPO = new HashMap<>();
 
@@ -26,9 +27,14 @@ public class UserServiceMockImpl implements UserService {
     }
 
     @Override
-    public User read(int id) {
+    public Optional<User> read(int id) {
         delay();
-        return USER_REPO.get(id);
+        return Optional.of(USER_REPO.get(id));
+    }
+
+    @Override
+    public boolean update(User user, int id) {
+        return false;
     }
 
     private void delay() {

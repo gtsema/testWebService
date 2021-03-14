@@ -1,17 +1,66 @@
 package ru.example.model;
 
+import com.fasterxml.jackson.annotation.JsonCreator;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import org.hibernate.annotations.Type;
+import org.hibernate.annotations.TypeDef;
+import ru.example.utils.EnumTypePostgreSQL;
+
+import javax.persistence.*;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.HashMap;
+import java.util.Map;
 
+@Entity
+@Table(name = "users")
+@TypeDef(
+    name = "enum_pgsql",
+    typeClass = EnumTypePostgreSQL.class
+)
+@SuppressWarnings("unused")
 public class User {
-    private Integer id;
-    private String username;
-    private String email;
-    private String phoneNumber;
-    private Status status;
-    private Date lastActivity;
 
-    public enum Status { Offline, Away, Online };
+    public enum Status {
+        Online,
+        Away,
+        Offline;
+
+        private static final Map<String, Status> mapping = new HashMap<>();
+
+        static {
+            mapping.put("Online", Online);
+            mapping.put("Away", Away);
+            mapping.put("Offline", Offline);
+        }
+
+        @JsonCreator
+        public static Status fromString(@JsonProperty("Status") String value) {
+            return mapping.get(value);
+        }
+    }
+
+    @Id
+    @Column(name = "id")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Integer id;
+
+    @Column
+    private String username;
+
+    @Column
+    private String email;
+
+    @Column(name = "phone_number")
+    private String phoneNumber;
+
+    @Enumerated(EnumType.STRING)
+    @Column
+    @Type(type = "enum_pgsql")
+    private Status status;
+
+    @Column(name = "last_activity")
+    private Date lastActivity;
 
     public User() {
         status = Status.Offline;
@@ -66,3 +115,4 @@ public class User {
         this.lastActivity = lastActivity;
     }
 }
+

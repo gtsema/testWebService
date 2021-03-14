@@ -8,7 +8,7 @@ function handleButtonClick() {
     let emailValue = document.getElementById("inputEmail").value;
     let phoneValue = document.getElementById("inputPhone").value;
 
-    let user = { username: nameValue, email: emailValue, phoneNumber : phoneValue };
+    let user = { username : nameValue, email : emailValue, phoneNumber : phoneValue };
 
     let response = fetch(url, {
         method: 'POST',

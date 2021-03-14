@@ -7,7 +7,7 @@
             <div class="form-group">
                 <label for="inputName">Username</label>
                 <input type="text" class="form-control form-control-sm" id="inputName" aria-describedby="usernameHelp" placeholder="Enter username">
-                <small id="usernameHelp" class="form-text text-muted">Your name is different for long time</small>
+                <small id="usernameHelp" class="form-text text-muted">Your name has changed long ago.</small>
             </div>
 
             <br>
@@ -15,7 +15,7 @@
             <div class="form-group">
                 <label for="inputEmail">Email address</label>
                 <input type="email" class="form-control form-control-sm" id="inputEmail" aria-describedby="emailHelp" placeholder="Enter email">
-                <small id="usernameHelp" class="form-text text-muted">Eyes lost their color forever</small>
+                <small id="usernameHelp" class="form-text text-muted">Your eyes have lost their colour for ever.</small>
             </div>
 
             <br>

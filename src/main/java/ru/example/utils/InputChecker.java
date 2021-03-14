@@ -1,8 +1,13 @@
 package ru.example.utils;
 
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import ru.example.model.User;
 
 public class InputChecker {
+
+    private static final Logger logger = LoggerFactory.getLogger(InputChecker.class);
+
     /**
      * Проверяет имя пользователя на корректность
      * @param username - имя пользователя
@@ -10,7 +15,9 @@ public class InputChecker {
      * от 1 до 16ти буквенно-цифровых символов.
      */
     public static boolean isUsername(String username) {
-        return !username.isEmpty() && username.matches("\\w{1,16}");
+        boolean result = !username.isEmpty() && username.matches("\\w{1,16}");
+        if(!result) logger.info("Username does not match the pattern or is empty");
+        return result;
     }
 
     /**
@@ -25,7 +32,9 @@ public class InputChecker {
      * буквенно-цифровых символов.
      */
     public static boolean isEmail(String email) {
-        return !email.isEmpty() && email.matches("^\\w{1,16}@\\w{1,16}[\\.][A-Za-z0-9]{2,3}");
+        boolean result = !email.isEmpty() && email.matches("^\\w{1,16}@\\w{1,16}[\\.][A-Za-z0-9]{2,3}");
+        if(!result) logger.info("Email does not match the pattern or is empty");
+        return result;
     }
 
     /**
@@ -36,24 +45,8 @@ public class InputChecker {
      * +7 (xxx) xxx-xxxx, где x - цифра.
      */
     public static boolean isPhoneNumber(String phone) {
-        return !phone.isEmpty() && phone.matches("^\\+7\\s\\(\\d{3}\\)\\s\\d{3}\\-\\d{4}");
-    }
-
-    /**
-     * Проверяет email на корректность
-     * @param status - статус пользователя.
-     * @return  - true, если статус пользователя
-     * содержится в enum User.Status.
-     */
-    public static boolean isStatus(String status) {
-        if(!status.isEmpty()) {
-            try {
-                User.Status.valueOf(status);
-                return true;
-            } catch (IllegalArgumentException e) {
-                return false;
-            }
-        }
-        return false;
+        boolean result = !phone.isEmpty() && phone.matches("^\\+7\\s\\(\\d{3}\\)\\s\\d{3}\\-\\d{4}");
+        if(!result) logger.info("Phone number does not match the pattern or is empty");
+        return result;
     }
 }
