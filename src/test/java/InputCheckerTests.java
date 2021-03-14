@@ -6,17 +6,21 @@ import ru.example.utils.InputChecker;
 import java.util.ArrayList;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 public class InputCheckerTests {
 
     @Test
     @DisplayName("isUsername_correctInput_true")
     public void isUsername_correctInput() {
         String correctUsername = "Claus";
-        Assertions.assertTrue(ru.example.utils.InputChecker.isUsername(correctUsername));
+        Assertions.assertTrue(InputChecker.isUsername(correctUsername));
     }
 
+    @Test
+    @DisplayName("isUsername_nullInput_false")
+    public void isUsername_nullInput() {
+        Assertions.assertFalse(InputChecker.isUsername(null));
+    }
+    
     @Test
     @DisplayName("isUsername_incorrectInputs_false")
     public void isUsername_incorrectInputs() {
@@ -29,14 +33,20 @@ public class InputCheckerTests {
             add("abcdefghhijklmnop");
         }};
 
-        incorrectInputs.forEach(str -> Assertions.assertFalse(ru.example.utils.InputChecker.isUsername(str)));
+        incorrectInputs.forEach(str -> Assertions.assertFalse(InputChecker.isUsername(str)));
     }
 
     @Test
     @DisplayName("isEmail_correctInput_true")
     public void isEmail_correctInput() {
         String correctEmail = "manbear@pig.com";
-        Assertions.assertTrue(ru.example.utils.InputChecker.isEmail(correctEmail));
+        Assertions.assertTrue(InputChecker.isEmail(correctEmail));
+    }
+
+    @Test
+    @DisplayName("isEmail_nullInput_false")
+    public void isEmail_nullInput() {
+        Assertions.assertFalse(InputChecker.isEmail(null));
     }
 
     @Test
@@ -62,14 +72,20 @@ public class InputCheckerTests {
             add("manbear@@#@%.com");
         }};
 
-        incorrectInputs.forEach(str -> Assertions.assertFalse(ru.example.utils.InputChecker.isEmail(str)));
+        incorrectInputs.forEach(str -> Assertions.assertFalse(InputChecker.isEmail(str)));
     }
 
     @Test
     @DisplayName("isPhoneNumber_correctInput_true")
     public void isPhoneNumber_correctInput() {
         String correctPhoneNumber = "+7 (952) 265-5119";
-        Assertions.assertTrue(ru.example.utils.InputChecker.isPhoneNumber(correctPhoneNumber));
+        Assertions.assertTrue(InputChecker.isPhoneNumber(correctPhoneNumber));
+    }
+
+    @Test
+    @DisplayName("isPhoneNumber_nullInput_false")
+    public void isPhoneNumber_nullInput() {
+        Assertions.assertFalse(InputChecker.isPhoneNumber(null));
     }
 
     @Test
@@ -99,6 +115,6 @@ public class InputCheckerTests {
             add("№;%");
         }};
 
-        incorrectInputs.forEach(str -> Assertions.assertFalse(ru.example.utils.InputChecker.isPhoneNumber(str)));
+        incorrectInputs.forEach(str -> Assertions.assertFalse(InputChecker.isPhoneNumber(str)));
     }
 }

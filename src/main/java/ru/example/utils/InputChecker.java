@@ -14,7 +14,7 @@ public class InputChecker {
      * от 1 до 16ти буквенно-цифровых символов.
      */
     public static boolean isUsername(String username) {
-        boolean result = !username.isEmpty() && username.matches("\\w{1,16}");
+        boolean result = (username != null) && !username.isEmpty() && username.matches("\\w{1,16}");
         if(!result) logger.info("Username does not match the pattern or is empty");
         return result;
     }
@@ -31,7 +31,7 @@ public class InputChecker {
      * буквенно-цифровых символов.
      */
     public static boolean isEmail(String email) {
-        boolean result = !email.isEmpty() && email.matches("^\\w{1,16}@\\w{1,16}[\\.][A-Za-z0-9]{2,3}");
+        boolean result = (email != null) && !email.isEmpty() && email.matches("^\\w{1,16}@\\w{1,16}[\\.][A-Za-z0-9]{2,3}");
         if(!result) logger.info("Email does not match the pattern or is empty");
         return result;
     }
@@ -44,7 +44,7 @@ public class InputChecker {
      * +7 (xxx) xxx-xxxx, где x - цифра.
      */
     public static boolean isPhoneNumber(String phone) {
-        boolean result = !phone.isEmpty() && phone.matches("^\\+7\\s\\(\\d{3}\\)\\s\\d{3}\\-\\d{4}");
+        boolean result = (phone != null) && !phone.isEmpty() && phone.matches("^\\+7\\s\\(\\d{3}\\)\\s\\d{3}\\-\\d{4}");
         if(!result) logger.info("Phone number does not match the pattern or is empty");
         return result;
     }
