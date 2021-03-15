@@ -10,7 +10,7 @@ import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.atomic.AtomicInteger;
 
-//@Service
+@Service
 public class UserServiceMockImpl implements UserService {
     private static final Logger logger = LoggerFactory.getLogger(UserServiceMockImpl.class);
 
