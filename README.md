@@ -6,9 +6,10 @@
 
 С заглушкой "сервер" отвечает через 5-10 секунд. Значение задержки устанавливается  в `/src/main/java/ru/example/service/UserServiceMockImpl.delay()`.
 
-Для того, чтобы запустить сервер с заглушкой БД необходимо пометить класс `/src/main/java/ru/example/Application.java` аннотацией _@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })_.
+Для того, чтобы запустить сервер с заглушкой БД необходимо пометить класс `/src/main/java/ru/example/Application.java` аннотацией _@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })_ и раскомментировать аннотацию _@Service_ в классе `UserServiceMockImpl.java`, а в классе `UserServiceDbImpl.java` - закомментировать.
 
-Чтобы запустить с БД - _@SpringBootApplication._
+И наоборот. Для того, чтобы запустить сервер с БД, необходимо пометить класс `/src/main/java/ru/example/Application.java` аннотацией _@SpringBootApplication_ и раскомментировать аннотацию _@Service_ в классе `UserServiceDbImpl.java`, а в классе `UserServiceMockImpl.java` - закомментировать.
+
 ____
 
 Написать серверную часть
