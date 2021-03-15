@@ -7,7 +7,7 @@ import ru.example.repository.UserRepository;
 
 import java.util.Optional;
 
-@Service
+//@Service
 public class UserServiceDbImpl implements UserService {
 
     @Autowired
