@@ -1,3 +1,12 @@
+`/src/main/java/ru/example/service/UserServiceDbImpl.java` - Реализация сервиса для работы с PosgreSQL
+
+`/src/main/java/ru/example/service/UserServiceMockImpl.java` - Реализация сервиса с заглушкой вместо БД
+
+`/src/main/resources/application.properties` содержит свойство _autoChangeStatusDelaySec_,<br> устанавливающее время <ins>в секундах</ins>, через которое произойдёт автосмена статуса с Online на Away.
+
+С заглушкой "сервер" отвечает через 5-10 секунд. Значение задержки устанавливается  в `/src/main/java/ru/example/service/UserServiceMockImpl.delay()`.
+____
+
 Написать серверную часть
 Web-приложения согласно следующим
 требованиям:
@@ -42,6 +51,6 @@ phoneNumber и т.д.). Сохраняем информацию в
 должно быть
 
 Обязательные требования:
-— RESTful
-— Все данные в формате JSON
-— Обработка ошибок
+- RESTful
+- Все данные в формате JSON
+- Обработка ошибок
