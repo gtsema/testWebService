@@ -5,6 +5,10 @@
 `/src/main/resources/application.properties` содержит свойство _autoChangeStatusDelaySec_,<br> устанавливающее время <ins>в секундах</ins>, через которое произойдёт автосмена статуса с Online на Away.
 
 С заглушкой "сервер" отвечает через 5-10 секунд. Значение задержки устанавливается  в `/src/main/java/ru/example/service/UserServiceMockImpl.delay()`.
+
+Для того, чтобы запустить сервер с заглушкой БД необходимо пометить класс `/src/main/java/ru/example/Application.java` аннотацией _@SpringBootApplication(exclude = {DataSourceAutoConfiguration.class })_.
+
+Чтобы запустить с БД - _@SpringBootApplication._
 ____
 
 Написать серверную часть
